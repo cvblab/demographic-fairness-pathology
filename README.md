@@ -1,6 +1,5 @@
-# Evaluating Fairness Across Demographic Attributes in Pathology Foundation Models
-
-This repository contains the source code for the paper 'Evaluating Fairness Across Demographic Attributes in Pathology Foundation Models'.
+# Evaluating Fairness
+This repository contains the source code for the paper '-'.
 
 ## Structure
 
