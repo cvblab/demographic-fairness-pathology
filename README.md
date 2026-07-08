@@ -1,66 +1,77 @@
-# Evaluating Fairness
-This repository contains the source code for the paper '-'.
+# Fairness Multimodal Evaluation via Neural Text-Proxies
 
-## Structure
+This repository contains the codebase for evaluating biases, multimodal fusion, and cross-cohort transfer learning in skin pathology representations. It focuses on integrating Whole Slide Images (WSI) and Pathology Reports, robustly evaluating performance under missing text conditions via AI-generated proxies, and enforcing demographic fairness using variational adversarial alignment.
 
-- `src/`: Source code python scripts.
-- `results/`: Output directory structure.
-  - `tables/`
-    - `exp0/`: Baseline Performance (AUC) and Fairness (DeltaEO) tables (Experiment 0).
-    - `exp1/`: Demographic Leakage Analysis results (Experiment 1).
-    - `exp2/`: Mitigation Experiment results (Experiment 2).
-    - `counts/`: Sample counts in LaTeX format.
-  - `plots/`
-    - `correlation/`: Plots showing Leakage vs Fairness, and Performance vs Fairness.
-    - `classifiers/`: Boxplots of fairness gaps by classifier algorithm.
-    - `mitigation/`: Bar plots comparing mitigation strategies.
+## Directory Structure
 
-## Prerequisites
+- `metadata/`: Contains all JSON and CSV files with dataset demographics and splits.
+- `features_*/`: Pre-extracted visual embeddings (CTransPath / Swin-T).
+- `output_histogpt_reports_*/`: HistoGPT generated reports and their PathologyBERT embeddings.
+- `src/`: Core pipeline execution scripts.
+  - `old/`: Archive of legacy data preparation and diagnostic scripts.
+- `FOMENT/`: Centralized output directory for all metrics, LaTeX tables, and plots.
 
-- **Data**: The code assumes data is located at `../data`.
-- **Dependencies**: Python 3.8+, pandas, numpy, scikit-learn, seaborn, matplotlib, fairlearn, umap-learn.
+## Prerequisites & Installation
 
-## Running the Pipeline
-
-### 1. Main Experiment Loop
-Run the main pipeline to generate all intermediate results (Tables and Experiment Logs). This script handles data loading, preprocessing, Exp0 (Baseline), Exp1 (Leakage), and Exp2 (Mitigation).
+To run this pipeline, you will need Python 3.9+ and the following core libraries.
 
 ```bash
-cd src
-python main.py
+pip install torch torchvision transformers scikit-learn pandas numpy matplotlib seaborn scipy
 ```
-*Note: This may take a significant amount of time depending on the dataset size and number of repeats.*
 
-### 2. Analysis and Plot Generation
-After `main.py` has completed and populated `results/tables/exp0`, `exp1`, and `exp2`, run the following scripts to generate the final figures and summary tables.
+Make sure you are executing the scripts from the `/workspace/src` directory.
 
-#### Correlation Analysis (Leakage vs Fairness)
+## Pipeline Execution
+
+The pipeline is organized in sequential steps, evaluating isolated modalities, baseline multimodal approaches, proposed adversarial alignment, and cross-cohort generalization.
+
+### Step 0: Modality Validation
 ```bash
-python correlation.py
+python step0.py
 ```
-Output: `results/plots/correlation/correlation_leakage_csv_eo.png`
+Evaluates purely the intrinsic diagnostic signal of real vs. AI-generated text modalities on the perfectly paired subset (samples that have a real report available). This establishes the reliability of the generated text proxy. Outputs to `FOMENT/step0_text_validation/`.
 
-#### Performance vs Unfairness Trade-offs
+### Step 1: Baseline Linear Probes
 ```bash
-python find_tradeoffs.py
+python step1.py
 ```
-Output: `results/plots/correlation/plot_perf_vs_bias.png`
+Evaluates straightforward unimodal linear probes for vision-only and text-only representations. Computes standard metrics (AUROC, Balanced Accuracy, F1-Score) and demographic leakage (predictability of Sex/Age). Outputs to `FOMENT/step1_results_<Dataset>/`.
 
-#### Methodology Comparison (Classifiers)
+### Step 2: Main Multimodal & Fairness Evaluation (Multiclass)
 ```bash
-python analyze_classifiers.py
+python step2.py
 ```
-Output: `results/plots/classifiers/classifier_fairness_boxplot.png`
+This comprehensive script tests multimodal fusion techniques (Concatenation, Cross-Attention, Late Fusion) alongside fairness baselines (Reweighting, GroupDRO, Adversarial Debiasing) and our proposed **Variational Adversarial Alignment** on all datasets (AI4SKIN, ASSIST, TCGA-SKCM). It calculates:
+- Performance (AUROC, Bal. Acc, F1)
+- Intersectional Fairness ($\Delta$EO, Demographic Parity)
+- Uncertainty Quantification (Mutual Information, Predictive Entropy via MC Dropout)
+- Out-Of-Distribution (OOD) generalizability on zero-context data.
 
-#### Mitigation Results Visualization
+Outputs, bootstrapped confidence intervals, and LaTeX tables are stored in `FOMENT/step2_results_<Dataset>/`.
+
+> **Note**: For Binary classification tasks (e.g., Benign vs Malignant), run the parallel script:
+> ```bash
+> python step2m.py
+> ```
+
+### Step 3: Cross-Cohort Zero-Shot Transfer
 ```bash
-python generate_plots.py
+python step3_cross_cohort.py
 ```
-Output: `results/plots/mitigation/final_mitigation_plot_Balanced.png`
+Pre-trains the adversarial alignment model on TCGA-SKCM and transfers the aligned representations zero-shot to AI4SKIN and ASSIST. This evaluates whether the alignment generalizes to out-of-distribution centers enforcing fairness and retaining accuracy. Outputs to `FOMENT/step3_cross_cohort_results/`.
 
-## Configuration
+### Step 4: Generative Proxy Ablation
+```bash
+python step4_proxy_ablation.py
+```
+Simulates extreme degradation in the AI-generated reports (via Gaussian Noise and Feature Masking) to measure the robustness of the multimodal fusion. Demonstrates that variational alignment maintains fairness and predictive accuracy without overfitting to brittle generative artifacts.
 
-Modify `src/config.py` to adjust:
-- `RESULTS_DIR`: Output location (Default: `/workspace/src/clean/results`)
-- `TASKS_CONFIG`: Tasks, biases, and groups definitions.
-- `N_REPEATS`: Number of bootstrap repeats.
+### Plotting
+```bash
+python plot_figures.py
+```
+Generates all publication-ready visualizations leveraging the `FOMENT/` CSV artifacts, including:
+- Performance vs. Fairness Pareto Frontiers.
+- Target cohort evaluation subgroup bar charts.
+- Cross-cohort transfer heatmaps.
+- Proxy degradation robustness curves (Gaussian Noise and Feature Masking).
