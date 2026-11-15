@@ -1,4 +1,4 @@
-# Fairness Multimodal Evaluation via Neural Text-Proxies
+# When Do Pathology Reports Help Whole-Slide Classifiers? Accuracy and Fairness under Test-Time Report Substitution
 
 This repository contains the codebase for evaluating biases, multimodal fusion, and cross-cohort transfer learning in skin pathology representations. It focuses on integrating Whole Slide Images (WSI) and Pathology Reports, robustly evaluating performance under missing text conditions via AI-generated proxies, and enforcing demographic fairness using variational adversarial alignment.
 
