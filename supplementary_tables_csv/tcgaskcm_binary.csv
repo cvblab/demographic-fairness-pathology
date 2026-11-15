@@ -1,0 +1,21 @@
+cohort,task,method,real_report_at_test_time,auroc,auroc_ci_low,auroc_ci_high,balanced_accuracy,macro_f1,epochs,eopp_gap_sex,eopp_gap_age,eodds_gap_sex
+TCGA-SKCM,binary,Vision (linear probe),no,0.602,0.53,0.68,0.577,0.576,,0.100,0.084,0.137
+TCGA-SKCM,binary,Generated report (linear probe),no,0.492,0.42,0.56,0.508,0.509,,0.020,0.006,0.125
+TCGA-SKCM,binary,Real report (linear probe),yes,0.515,0.44,0.59,0.521,0.254,,0.091,0.089,0.091
+TCGA-SKCM,binary,ABMIL (patch-level),no,0.499,0.42,0.58,0.501,0.512,,0.115,0.076,0.115
+TCGA-SKCM,binary,Vision MLP,no,0.577,0.50,0.65,0.562,0.562,36,0.053,0.125,0.058
+TCGA-SKCM,binary,Vision + generated text,no,0.558,0.48,0.63,0.536,0.533,37,0.007,0.080,0.007
+TCGA-SKCM,binary,Adversarial debiasing w/o centre adv.,no,0.552,0.48,0.63,0.552,0.551,38,0.064,0.137,0.064
+TCGA-SKCM,binary,GroupDRO,no,0.544,0.47,0.62,0.521,0.522,37,0.002,0.101,0.047
+TCGA-SKCM,binary,Vision + gen. text MLP (no NLL),no,0.531,0.46,0.61,0.499,0.465,37,0.104,0.026,0.104
+TCGA-SKCM,binary,Alignment only (det.),no,0.535,0.46,0.61,0.499,0.485,37,0.071,0.087,0.071
+TCGA-SKCM,binary,Alignment only (diag.),no,0.555,0.48,0.63,0.530,0.518,38,0.000,0.074,0.041
+TCGA-SKCM,binary,Alignment only (low-rank),no,0.544,0.47,0.62,0.505,0.498,39,0.098,0.003,0.098
+TCGA-SKCM,binary,Full model (det.) w/o centre adv.,no,0.540,0.47,0.62,0.536,0.536,42,0.075,0.028,0.075
+TCGA-SKCM,binary,Full model (diag.) w/o centre adv.,no,0.544,0.47,0.62,0.514,0.506,41,0.136,0.094,0.136
+TCGA-SKCM,binary,Full model (low-rank) w/o centre adv.,no,0.539,0.47,0.62,0.517,0.520,42,0.144,0.012,0.144
+TCGA-SKCM,binary,Full model (det.) + centre adv.,no,0.515,0.44,0.58,0.495,0.503,46,0.009,0.024,0.084
+TCGA-SKCM,binary,Full model (diag.) + centre adv.,no,0.481,0.41,0.56,0.471,0.432,47,0.058,0.047,0.058
+TCGA-SKCM,binary,Full model (low-rank) + centre adv.,no,0.526,0.45,0.61,0.518,0.505,43,0.098,0.033,0.098
+TCGA-SKCM,binary,"Full (low-rank), NLL summed over dimensions",no,0.535,0.46,0.61,0.502,0.480,40,0.227,0.040,0.227
+TCGA-SKCM,binary,Vision + real report,yes,0.536,0.47,0.60,0.517,0.529,37,0.113,0.049,0.113

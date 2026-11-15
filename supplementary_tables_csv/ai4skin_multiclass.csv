@@ -1,0 +1,18 @@
+cohort,task,method,real_report_at_test_time,auroc,auroc_ci_low,auroc_ci_high,balanced_accuracy,macro_f1,epochs,eopp_gap_sex,eopp_gap_age,eodds_gap_sex
+AI4SKIN,multiclass,Vision (linear probe),no,0.963,0.94,0.98,0.726,0.728,,0.143,0.184,0.162
+AI4SKIN,multiclass,Generated report (linear probe),no,0.695,0.66,0.74,0.267,0.263,,0.128,0.185,0.138
+AI4SKIN,multiclass,Real report (linear probe),yes,0.982,0.97,0.99,0.825,0.839,,0.091,0.056,0.091
+AI4SKIN,multiclass,ABMIL (patch-level),no,0.970,0.95,0.98,0.780,0.775,,0.109,0.096,0.109
+AI4SKIN,multiclass,Vision MLP,no,0.963,0.95,0.98,0.774,0.779,38,0.084,0.132,0.084
+AI4SKIN,multiclass,Vision + generated text,no,0.964,0.95,0.98,0.749,0.761,41,0.142,0.130,0.142
+AI4SKIN,multiclass,Adversarial debiasing,no,0.957,0.94,0.97,0.733,0.742,47,0.144,0.115,0.144
+AI4SKIN,multiclass,GroupDRO,no,0.964,0.95,0.98,0.755,0.764,44,0.131,0.146,0.131
+AI4SKIN,multiclass,Vision + gen. text MLP (no NLL),no,0.961,0.94,0.98,0.752,0.759,43,0.116,0.109,0.116
+AI4SKIN,multiclass,Alignment only (det.),no,0.963,0.95,0.98,0.762,0.766,43,0.173,0.174,0.173
+AI4SKIN,multiclass,Alignment only (diag.),no,0.966,0.95,0.98,0.754,0.765,40,0.108,0.168,0.108
+AI4SKIN,multiclass,Alignment only (low-rank),no,0.964,0.95,0.98,0.784,0.791,44,0.124,0.157,0.124
+AI4SKIN,multiclass,Full model (det.),no,0.954,0.93,0.97,0.763,0.758,52,0.181,0.213,0.185
+AI4SKIN,multiclass,Full model (diag.),no,0.956,0.94,0.97,0.779,0.772,46,0.142,0.182,0.142
+AI4SKIN,multiclass,Full model (low-rank),no,0.958,0.94,0.98,0.780,0.775,46,0.116,0.188,0.120
+AI4SKIN,multiclass,"Full (low-rank), NLL summed over dimensions",no,0.952,0.93,0.97,0.757,0.754,46,0.116,0.191,0.127
+AI4SKIN,multiclass,Vision + real report,yes,0.990,0.98,1.00,0.868,0.888,65,0.171,0.113,0.171

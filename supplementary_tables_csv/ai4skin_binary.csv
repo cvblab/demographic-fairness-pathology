@@ -1,0 +1,18 @@
+cohort,task,method,real_report_at_test_time,auroc,auroc_ci_low,auroc_ci_high,balanced_accuracy,macro_f1,epochs,eopp_gap_sex,eopp_gap_age,eodds_gap_sex
+AI4SKIN,binary,Vision (linear probe),no,0.947,0.92,0.97,0.886,0.883,,0.035,0.178,0.041
+AI4SKIN,binary,Generated report (linear probe),no,0.616,0.55,0.68,0.609,0.590,,0.084,0.040,0.226
+AI4SKIN,binary,Real report (linear probe),yes,0.990,0.98,1.00,0.965,0.964,,0.005,0.032,0.029
+AI4SKIN,binary,ABMIL (patch-level),no,0.970,0.95,0.98,0.910,0.907,,0.049,0.018,0.063
+AI4SKIN,binary,Vision MLP,no,0.951,0.92,0.97,0.886,0.882,37,0.022,0.201,0.052
+AI4SKIN,binary,Vision + generated text,no,0.938,0.91,0.96,0.867,0.862,38,0.020,0.165,0.061
+AI4SKIN,binary,Adversarial debiasing,no,0.921,0.89,0.95,0.847,0.837,43,0.054,0.126,0.054
+AI4SKIN,binary,GroupDRO,no,0.935,0.90,0.96,0.851,0.843,40,0.005,0.151,0.061
+AI4SKIN,binary,Vision + gen. text MLP (no NLL),no,0.947,0.92,0.97,0.874,0.867,44,0.007,0.187,0.007
+AI4SKIN,binary,Alignment only (det.),no,0.945,0.92,0.97,0.870,0.864,41,0.007,0.187,0.052
+AI4SKIN,binary,Alignment only (diag.),no,0.945,0.92,0.97,0.878,0.872,39,0.015,0.165,0.032
+AI4SKIN,binary,Alignment only (low-rank),no,0.949,0.92,0.97,0.894,0.890,45,0.035,0.213,0.063
+AI4SKIN,binary,Full model (det.),no,0.934,0.91,0.96,0.843,0.833,45,0.037,0.184,0.041
+AI4SKIN,binary,Full model (diag.),no,0.936,0.90,0.96,0.835,0.823,41,0.012,0.195,0.012
+AI4SKIN,binary,Full model (low-rank),no,0.934,0.90,0.97,0.848,0.841,51,0.017,0.128,0.025
+AI4SKIN,binary,"Full (low-rank), NLL summed over dimensions",no,0.937,0.90,0.97,0.856,0.850,46,0.007,0.222,0.007
+AI4SKIN,binary,Vision + real report,yes,0.990,0.98,1.00,0.947,0.944,60,0.005,0.147,0.027

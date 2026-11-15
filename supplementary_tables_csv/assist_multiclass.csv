@@ -1,0 +1,18 @@
+cohort,task,method,real_report_at_test_time,auroc,auroc_ci_low,auroc_ci_high,balanced_accuracy,macro_f1,epochs,eopp_gap_sex,eopp_gap_age,eodds_gap_sex
+ASSIST,multiclass,Vision (linear probe),no,0.726,0.69,0.76,0.390,0.386,,0.150,0.149,0.150
+ASSIST,multiclass,Generated report (linear probe),no,0.463,0.42,0.51,0.136,0.135,,0.109,0.097,0.136
+ASSIST,multiclass,Real report (linear probe),yes,0.761,0.73,0.79,0.469,0.469,,0.088,0.107,0.104
+ASSIST,multiclass,ABMIL (patch-level),no,0.720,0.68,0.76,0.418,0.395,,0.236,0.140,0.236
+ASSIST,multiclass,Vision MLP,no,0.699,0.65,0.74,0.389,0.371,36,0.223,0.057,0.223
+ASSIST,multiclass,Vision + generated text,no,0.684,0.64,0.73,0.389,0.364,36,0.209,0.112,0.210
+ASSIST,multiclass,Adversarial debiasing,no,0.663,0.62,0.71,0.396,0.366,39,0.194,0.159,0.194
+ASSIST,multiclass,GroupDRO,no,0.671,0.62,0.72,0.384,0.351,37,0.306,0.130,0.306
+ASSIST,multiclass,Vision + gen. text MLP (no NLL),no,0.683,0.64,0.73,0.403,0.377,38,0.242,0.110,0.251
+ASSIST,multiclass,Alignment only (det.),no,0.681,0.63,0.72,0.409,0.387,38,0.261,0.133,0.261
+ASSIST,multiclass,Alignment only (diag.),no,0.693,0.65,0.74,0.391,0.368,36,0.235,0.060,0.239
+ASSIST,multiclass,Alignment only (low-rank),no,0.675,0.63,0.72,0.424,0.401,37,0.236,0.102,0.236
+ASSIST,multiclass,Full model (det.),no,0.666,0.62,0.71,0.379,0.350,41,0.192,0.142,0.192
+ASSIST,multiclass,Full model (diag.),no,0.671,0.62,0.72,0.386,0.359,38,0.200,0.134,0.207
+ASSIST,multiclass,Full model (low-rank),no,0.674,0.62,0.72,0.390,0.367,40,0.218,0.142,0.218
+ASSIST,multiclass,"Full (low-rank), NLL summed over dimensions",no,0.671,0.62,0.71,0.374,0.357,38,0.221,0.140,0.221
+ASSIST,multiclass,Vision + real report,yes,0.741,0.70,0.78,0.483,0.457,37,0.254,0.086,0.255

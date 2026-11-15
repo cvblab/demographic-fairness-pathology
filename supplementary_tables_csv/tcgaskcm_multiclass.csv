@@ -1,0 +1,21 @@
+cohort,task,method,real_report_at_test_time,auroc,auroc_ci_low,auroc_ci_high,balanced_accuracy,macro_f1,epochs,eopp_gap_sex,eopp_gap_age,eodds_gap_sex
+TCGA-SKCM,multiclass,Vision (linear probe),no,0.627,0.58,0.67,0.337,0.338,,0.194,0.085,0.209
+TCGA-SKCM,multiclass,Generated report (linear probe),no,0.495,0.45,0.54,0.244,0.244,,0.048,0.076,0.089
+TCGA-SKCM,multiclass,Real report (linear probe),yes,0.498,0.44,0.55,0.255,0.207,,0.036,0.048,0.053
+TCGA-SKCM,multiclass,ABMIL (patch-level),no,0.604,0.56,0.65,0.299,0.289,,0.084,0.081,0.113
+TCGA-SKCM,multiclass,Vision MLP,no,0.619,0.57,0.67,0.336,0.335,35,0.132,0.127,0.132
+TCGA-SKCM,multiclass,Vision + generated text,no,0.601,0.55,0.65,0.307,0.293,36,0.156,0.115,0.156
+TCGA-SKCM,multiclass,Adversarial debiasing w/o centre adv.,no,0.605,0.56,0.65,0.299,0.289,36,0.143,0.085,0.150
+TCGA-SKCM,multiclass,GroupDRO,no,0.596,0.55,0.64,0.275,0.262,37,0.113,0.102,0.116
+TCGA-SKCM,multiclass,Vision + gen. text MLP (no NLL),no,0.610,0.56,0.66,0.332,0.301,37,0.130,0.089,0.140
+TCGA-SKCM,multiclass,Alignment only (det.),no,0.604,0.56,0.65,0.331,0.305,37,0.151,0.068,0.156
+TCGA-SKCM,multiclass,Alignment only (diag.),no,0.618,0.57,0.66,0.351,0.334,36,0.154,0.115,0.183
+TCGA-SKCM,multiclass,Alignment only (low-rank),no,0.610,0.56,0.66,0.336,0.323,37,0.091,0.071,0.134
+TCGA-SKCM,multiclass,Full model (det.) w/o centre adv.,no,0.602,0.56,0.65,0.323,0.293,37,0.193,0.037,0.209
+TCGA-SKCM,multiclass,Full model (diag.) w/o centre adv.,no,0.620,0.57,0.66,0.344,0.325,38,0.160,0.107,0.175
+TCGA-SKCM,multiclass,Full model (low-rank) w/o centre adv.,no,0.609,0.56,0.65,0.335,0.320,37,0.100,0.049,0.121
+TCGA-SKCM,multiclass,Full model (det.) + centre adv.,no,0.598,0.55,0.65,0.333,0.299,43,0.105,0.050,0.131
+TCGA-SKCM,multiclass,Full model (diag.) + centre adv.,no,0.607,0.56,0.65,0.343,0.308,40,0.166,0.073,0.192
+TCGA-SKCM,multiclass,Full model (low-rank) + centre adv.,no,0.611,0.56,0.66,0.320,0.302,42,0.164,0.082,0.188
+TCGA-SKCM,multiclass,"Full (low-rank), NLL summed over dimensions",no,0.615,0.57,0.66,0.343,0.322,38,0.116,0.087,0.116
+TCGA-SKCM,multiclass,Vision + real report,yes,0.616,0.57,0.66,0.326,0.306,37,0.094,0.042,0.112
